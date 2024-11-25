@@ -85,7 +85,7 @@ unset($_SESSION['mensaje']);
     </footer><!-- JavaScript para eliminar el mensaje al recargar -->
     <script>
         window.onload = function() {
-            // Eliminar el mensaje del DOM después de 2 segundos
+            // Eliminar el mensaje después de 2 segundos
             setTimeout(() => {
                 const mensajeDiv = document.getElementById('mensaje');
                 if (mensajeDiv) mensajeDiv.remove();
