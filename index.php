@@ -12,40 +12,8 @@ unset($_SESSION['mensaje']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Alumnos</title>
-    <link rel="stylesheet" href="CSS/interfaz.css"></head>
-    <style> 
-    /*estilos directos*/
-        footer{   
-            background-color: #f1f1f1 ;
-            color: #212529;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra superior */
-            width: 100%;
-        
-        }
-        .mensaje {
-        margin: 10px auto;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        max-width: 400px;
-        text-align: center;
-        font-weight: bold;
-        }
-
-        .mensaje.exito {
-        background-color: #d4edda;
-        color: #155724;
-        border-color: #c3e6cb;
-        }
-
-        .mensaje.error {
-        background-color: #f8d7da;
-        color: #721c24;
-        border-color: #f5c6cb;
-        }
-    </style>
+    <link rel="stylesheet" href="CSS/index.css"></head>
+    
 
 </head>
 <body>
@@ -76,9 +44,25 @@ unset($_SESSION['mensaje']);
             <input type="text" id="matricula" name="matricula" required>
             <br><br><br>
             <button type="submit" class="btn">Registrar ➡</button>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br>
         </form>
-    </main>
+        <table class="alumnos-tabla">
+      <thead>
+        <tr>
+          <th>Matrícula</th>
+          <th>Alumno</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Carrera</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aqui se van ir agregando dinamicamente las filas -->
+      </tbody>
+    </table>
+  </main>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     <footer class="footer">
         <p>&copy; 2024 Universidad Autónoma de Occidente | Desarrollado por Servicio Social</p>
