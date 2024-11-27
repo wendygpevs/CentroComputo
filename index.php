@@ -77,7 +77,7 @@ unset($_SESSION['mensaje']);
             setTimeout(() => {
                 const mensajeDiv = document.getElementById('mensaje');
                 if (mensajeDiv) mensajeDiv.remove();
-            }, 2000); // aqui se ajusta los segundos que durará el mensaje en la pantalla 
+            }, 4000); // aqui se ajusta los segundos que durará el mensaje en la pantalla 
         };
     </script>
 </body>
