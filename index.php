@@ -34,7 +34,7 @@ unset($_SESSION['mensaje']);
 
     <main>
         <br>
-        <h1>Registro de Alumnos</h1>
+        <h1>Ingreso de Alumnos</h1>
         <br>
         <!-- Mostrar mensaje si está presente -->
           <?php if ($mensaje): ?>
@@ -50,6 +50,8 @@ unset($_SESSION['mensaje']);
             <button type="submit" class="btn">Registrar ➡</button>
             <br><br><br><br>
         </form>
+        <p>¿Tú matricula no esta registrada? <a href="registro_alumnos.php">Regístrate aquí</a></p>
+        <br>
         <table class="alumnos-tabla">
       <thead>
         <tr>
