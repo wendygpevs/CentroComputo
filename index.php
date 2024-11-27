@@ -13,7 +13,7 @@ unset($_SESSION['mensaje']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Alumnos</title>
     <link rel="stylesheet" href="CSS/index.css"></head>
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -21,11 +21,15 @@ unset($_SESSION['mensaje']);
         <div class="logo">
             <img src="Imagenes/uadeo_logo.png" alt="UAdeO Logo">
         </div>
-      <!---- <div class="menu-icon">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>-- En caso que lleve más apartados--> 
+        <!-- Menú desplegable -->
+    <input type="checkbox" id="click" class="menu-checkbox">
+    <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i> <!-- Asegúrate de usar Font Awesome para este ícono -->
+    </label>
+    <ul class="dropdown-menu">
+        <li><a href="index.php">Ingreso</a></li>
+        <li><a href="registro_alumnos.php">Registro</a></li>
+    </ul>
     </header>
 
     <main>
