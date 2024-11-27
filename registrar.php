@@ -48,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensaje'] = "Matrícula no encontrada. Verifica tus datos.";
     }
 
-    // Redirigir a la interfaz
-    header("Location: interfaz.php");
+    // Redirigir a la interfaz/index
+    header("Location: index.php");
     exit;
 }
 
