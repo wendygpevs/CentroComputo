@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        VALUES ('$matricula', $carrera_id)";
         if ($conn->query($sql_insert) === TRUE) {
             // Guardar mensaje en la sesión
-            $_SESSION['mensaje'] = "Registro exitoso para $nombre_alumno $app_alumno $apm_alumno en la carrera $nombre_carrera.";
+            $_SESSION['mensaje'] = "Registro exitoso para $nombre_alumno $app_alumno $apm_alumno de la carrera $nombre_carrera.";
         } else {
             $_SESSION['mensaje'] = "Error al registrar: " . $conn->error;
         }
