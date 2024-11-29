@@ -2,20 +2,13 @@
 // Iniciar sesión
 session_start();
 
-// Reportar errores en caso que los tenga
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "centro_computo"; // Conexión directamente a la base de datos
-
-$conn = new mysqli($host, $user, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
+// Incluir el archivo de conexión
+require 'conexion.php';
+// Configuración para la paginación
+$registros_por_pagina = 50; // Número de registros por página
+$pagina_actual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual
+if ($pagina_actual < 1) $pagina_actual = 1; // Asegurar que la página no sea negativa o cero
+$offset = ($pagina_actual - 1) * $registros_por_pagina;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $matricula = $conn->real_escape_string($_POST['matricula']);
@@ -55,5 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
+// Consultar los registros con paginación
+$sql_registros = "SELECT R.REG_ALU_MATRICULA, A.ALU_NOMBRE, A.ALU_APP, A.ALU_APM, C.CAR_NOMBRE, R.REG_FECHA
+                  FROM registro R
+                  INNER JOIN alumno A ON R.REG_ALU_MATRICULA = A.ALU_MATRICULA
+                  INNER JOIN carrera C ON R.REG_CAR_ID = C.CAR_ID
+                  ORDER BY R.REG_FECHA DESC
+                  LIMIT $registros_por_pagina OFFSET $offset";
+$result_registros = $conn->query($sql_registros);
+
+// Calcular el número total de páginas
+$sql_total_registros = "SELECT COUNT(*) AS total FROM registro";
+$result_total = $conn->query($sql_total_registros);
+$total_registros = $result_total->fetch_assoc()['total'];
+$total_paginas = ceil($total_registros / $registros_por_pagina);
+
+// Cerrar conexión
 $conn->close();
 ?>
