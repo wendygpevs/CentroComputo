@@ -8,13 +8,30 @@ unset($_SESSION['mensaje']);
 
 require 'conexion.php';
 
+// Número de registros por página
+$registrosPorPagina = 10;
 
-// Consulta para obtener todos los registros
+// Obtener el número de página actual desde el parámetro GET (predeterminado: 1)
+$paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+
+// Calcular el offset (desde qué registro empezar)
+$offset = ($paginaActual - 1) * $registrosPorPagina;
+
+// Consulta para obtener el número total de registros
+$sqlTotalRegistros = "SELECT COUNT(*) as total FROM registro";
+$resultTotal = $conn->query($sqlTotalRegistros);
+$totalRegistros = $resultTotal->fetch_assoc()['total'];
+
+// Calcular el número total de páginas
+$totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+
+// Consulta para obtener los registros con paginación
 $sql = "SELECT R.REG_ALU_MATRICULA, A.ALU_NOMBRE, A.ALU_APP, A.ALU_APM, C.CAR_NOMBRE, R.REG_FECHA
         FROM registro R
         INNER JOIN alumno A ON R.REG_ALU_MATRICULA = A.ALU_MATRICULA
         INNER JOIN carrera C ON R.REG_CAR_ID = C.CAR_ID
-        ORDER BY R.REG_FECHA DESC"; // Los registros más recientes aparecen primero
+        ORDER BY R.REG_FECHA DESC
+        LIMIT $registrosPorPagina OFFSET $offset";
 $result = $conn->query($sql);
 
 $registros = [];
@@ -95,21 +112,30 @@ $conn->close();
                 <?php endforeach; ?>
             </tbody>
         </table>
-    </main>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
+        <!-- Paginación -->
+            <div class="pagination">
+                <?php if ($paginaActual > 1): ?>
+                    <a href="?pagina=<?= $paginaActual - 1; ?>">&laquo; Anterior</a>
+                <?php else: ?>
+                    <span class="disabled">&laquo; Anterior</span>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                    <a href="?pagina=<?= $i; ?>" <?= $i === $paginaActual ? 'class="active"' : ''; ?>>
+                        <?= $i; ?>
+                    </a>
+                <?php endfor; ?>
+
+                <?php if ($paginaActual < $totalPaginas): ?>
+                    <a href="?pagina=<?= $paginaActual + 1; ?>">Siguiente &raquo;</a>
+                <?php else: ?>
+                    <span class="disabled">Siguiente &raquo;</span>
+                    <?php endif; ?>
+                </div>
+    </main>
     <footer class="footer">
         <p>&copy; 2024 Universidad Autónoma de Occidente | Desarrollado por Servicio Social</p>
     </footer>
-
-    <script>
-        window.onload = function() {
-            // Eliminar el mensaje después de 2 segundos
-            setTimeout(() => {
-                const mensajeDiv = document.getElementById('mensaje');
-                if (mensajeDiv) mensajeDiv.remove();
-            }, 4000); // Ajusta el tiempo en que durará el mensaje en la pantalla
-        };
-    </script>
 </body>
 </html>

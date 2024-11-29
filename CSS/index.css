@@ -313,4 +313,37 @@ footer{
   .menu-checkbox:checked ~ .dropdown-menu {
     display: block;
   }
-  
+  .pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination a,
+.pagination span {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 14px;
+}
+
+.pagination a:hover {
+    background-color: #ddd;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination .disabled {
+    color: #aaa;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+}
+
