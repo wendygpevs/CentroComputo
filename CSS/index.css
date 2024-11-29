@@ -16,7 +16,17 @@
     display: flex;
     flex-direction: column; /* Permite apilar header, main y footer */
   }
-
+  
+  header {
+    background-color: #a82c47;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+  }
+  
   .logo img {
     height: 50px;
   }
@@ -142,6 +152,12 @@ main {
     max-width: 500px;
 }
 
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -246,6 +262,8 @@ footer{
 .alumnos-tabla tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
+/* General Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
@@ -313,37 +331,4 @@ footer{
   .menu-checkbox:checked ~ .dropdown-menu {
     display: block;
   }
-  .pagination {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.pagination a,
-.pagination span {
-    margin: 0 5px;
-    padding: 8px 16px;
-    text-decoration: none;
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    color: #333;
-    font-size: 14px;
-}
-
-.pagination a:hover {
-    background-color: #ddd;
-}
-
-.pagination a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-.pagination .disabled {
-    color: #aaa;
-    border: 1px solid #ddd;
-    padding: 8px 16px;
-    background-color: #f9f9f9;
-    cursor: not-allowed;
-}
-
+  
