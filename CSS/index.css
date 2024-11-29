@@ -16,17 +16,7 @@
     display: flex;
     flex-direction: column; /* Permite apilar header, main y footer */
   }
-  
-  header {
-    background-color: #a82c47;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: #fff;
-  }
-  
+
   .logo img {
     height: 50px;
   }
@@ -152,12 +142,6 @@ main {
     max-width: 500px;
 }
 
-h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
 .form {
     display: flex;
     flex-direction: column;
@@ -262,8 +246,6 @@ footer{
 .alumnos-tabla tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
-/* General Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
