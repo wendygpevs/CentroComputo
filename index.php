@@ -6,16 +6,8 @@ session_start();
 $mensaje = isset($_SESSION['mensaje']) ? $_SESSION['mensaje'] : null;
 unset($_SESSION['mensaje']);
 
-// Conexión a la base de datos
-$host = "localhost";
-$user = "root";
-$password = "";
-$dbname = "centro_computo"; // Base de datos
-$conn = new mysqli($host, $user, $password, $dbname);
+require 'conexion.php';
 
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
 
 // Consulta para obtener todos los registros
 $sql = "SELECT R.REG_ALU_MATRICULA, A.ALU_NOMBRE, A.ALU_APP, A.ALU_APM, C.CAR_NOMBRE, R.REG_FECHA
